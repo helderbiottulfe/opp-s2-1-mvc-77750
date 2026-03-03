@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-CommunityLibrary-d643b796-0569-4b23-86ff-a70484bf36a6</UserSecretsId>
+        <RootNamespace>CommunityLibrary</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Bogus" Version="35.6.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.24" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.24" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.24" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.24" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.24" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controllers\Admin\" />
+    </ItemGroup>
+
+</Project>

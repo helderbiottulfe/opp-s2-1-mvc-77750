@@ -1,0 +1,37 @@
+## .NET Core
+bin/
+obj/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.sln.docstates
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+## Visual Studio
+.vs/
+*.swp
+*.swo
+*.*.user
+*.lnt
+*.ide/
+
+## Rider
+.idea/
+*.sln.iml
+
+## SQLite files
+*.db
+*.db-journal
+
+## Environment Files
+appsettings.Development.json
