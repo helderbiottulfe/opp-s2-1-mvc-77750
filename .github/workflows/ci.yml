@@ -36,14 +36,18 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --no-restore -c Release
+        run: dotnet build -c Release --no-restore
 
       - name: Show working directory
-        run: pwd && ls -la
+        run: |
+          pwd
+          ls -la
+          echo "Test project folder:"
+          ls -la CommunityLibrary.Tests/ || echo "Test folder not found"
 
       - name: Test and collect coverage
         run: |
-          dotnet test $TEST_PROJECT -c Release --no-build \
+          dotnet test $TEST_PROJECT -c Release \
             --collect:"XPlat Code Coverage" \
             --logger "trx;LogFileName=test-results.trx" \
             --results-directory ./TestResults
