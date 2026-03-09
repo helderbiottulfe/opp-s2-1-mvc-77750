@@ -1,0 +1,36 @@
+@model IEnumerable<CommunityLibrary.Models.Member>
+@{
+    ViewData["Title"] = "Members";
+}
+
+<h1>Library Members</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Member</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var member in Model)
+    {
+        <tr>
+            <td>@member.FullName</td>
+            <td>@member.Email</td>
+            <td>@member.Phone</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@member.Id" class="btn btn-sm btn-warning">Edit</a>
+                <a asp-action="Details" asp-route-id="@member.Id" class="btn btn-sm btn-info">Details</a>
+                <a asp-action="Delete" asp-route-id="@member.Id" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

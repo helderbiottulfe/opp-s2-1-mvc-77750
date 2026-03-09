@@ -1,0 +1,65 @@
+@model IEnumerable<CommunityLibrary.Models.Loan>
+@{
+    ViewData["Title"] = "Loans";
+}
+
+<h1>Library Loans</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Loan</a>
+    <a asp-action="Overdue" class="btn btn-warning">View Overdue Loans</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Member</th>
+            <th>Loan Date</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var loan in Model)
+        {
+            <tr>
+                <td>@loan.Book?.Title</td>
+                <td>@loan.Member?.FullName</td>
+                <td>@loan.LoanDate.ToShortDateString()</td>
+                <td>@loan.DueDate.ToShortDateString()</td>
+                <td>
+                    @if (loan.ReturnedDate != null)
+                    {
+                        <span class="badge bg-success">Returned on @loan.ReturnedDate.Value.ToShortDateString()</span>
+                    }
+                    else if (loan.DueDate < DateTime.Now)
+                    {
+                        <span class="badge bg-danger">Overdue</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-primary">Active</span>
+                    }
+                </td>
+                <td>
+                    @if (loan.ReturnedDate == null)
+                    {
+                        <form asp-action="Return" method="post" style="display: inline;">
+                            <input type="hidden" name="id" value="@loan.Id" />
+                            <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Mark this book as returned?')">Return</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No loans found. <a asp-action="Create">Create your first loan</a>.
+    </div>
+}

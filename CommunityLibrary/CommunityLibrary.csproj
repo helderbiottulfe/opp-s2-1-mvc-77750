@@ -22,7 +22,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\Admin\" />
+      <_ContentIncludedByDefault Remove="CommunityLibrary\Views\Loan\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="CommunityLibrary\Views\Books\Index.cshtml" />
     </ItemGroup>
 
 </Project>
